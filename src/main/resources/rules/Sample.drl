@@ -1,6 +1,21 @@
 package com.sample
  
 import com.sample.DroolsTest.Message;
+
+declare Question
+	question: String
+	answer: Boolean
+end
+
+rule "Init"
+	when
+	
+	then
+		Question question = new Question();
+		question.setQuestion("Ala ma kota?");
+		question.setAnswer(null);
+		insert(question);
+end
  
 rule "Hello World"
     when
@@ -12,9 +27,16 @@ rule "Hello World"
         update( m );
 end
 
+rule "zlap"
+    when
+        m : Question( question == "Ala ma kota?")
+    then
+        System.out.println( "123");
+end
+
 rule "GoodBye"
     when
-        Message( status == Message.GOODBYE, myMessage : message )
+        m : Question( answer == true)
     then
-        System.out.println( myMessage );
+        System.out.println( m.getQuestion() );
 end
