@@ -1,38 +1,63 @@
 package com.sample
- 
+import javax.swing.*;
+import org.kie.api.runtime.KieRuntime;
+import java.util.ArrayList;
 import com.sample.DroolsTest.*;
+
+global JFrame frame ;
+global javax.swing.JTextArea textArea;
 
 declare Question
 	question: String
-	answer: Boolean
+	answer: String
 end
 
-rule "Init"
+rule "Ask about action"
 	when
-		
 	then
 		Question question = new Question();
-		question.setQuestion("Ala ma kota?");
-		changeLabel.change("Ala ma kota?");
-		question.setAnswer(null);
+		question.setQuestion(questions(1));
 		insert(question);
-end
- 
-rule "Hello World"
-    when
-        m : Message( status == Message.HELLO, myMessage : message )
-    then
-        System.out.println( myMessage );
-        m.setMessage( "Goodbye cruel world" );
-        m.setStatus( Message.GOODBYE );
-        update( m );
+		//changeLabel.change("Ala ma kota?");
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = askWindow(frame, kcontext.getKieRuntime(), question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
 end
 
-rule "zlap"
+rule "Ask about Terminator"
     when
-        m : Question( question == "Ala ma kota?")
+        question : Question(question == questions(1), answer == "Yes")
     then
-        System.out.println( "123");
+        question.setQuestion(questions(2));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = askWindow(frame, kcontext.getKieRuntime(), question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about documentary"
+    when
+        question : Question(question == questions(1), answer == "No")
+    then
+        question.setQuestion(questions(3));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = askWindow(frame, kcontext.getKieRuntime(), question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Recommend Terminator 2"
+    when
+        question : Question(question == questions(2), answer == "Yes")
+    then
+		recommendWindow(frame, kcontext.getKieRuntime(), "Terminator 2: Judgement Day");
 end
 
 rule "GoodBye"
@@ -41,3 +66,111 @@ rule "GoodBye"
     then
         System.out.println( m.getQuestion() );
 end
+
+
+function String questions(int n) {
+	switch(n) {
+		case 1: return "Want your night to be action packed?";
+		case 2: return "Have you seen The Terminator?";
+		case 3: return "What about a documentary?";
+		default: return "OOO";
+	}
+}
+
+function String askWindow(JFrame frame, KieRuntime krt, String question, ArrayList variants) {
+		Object[] options = {variants.get(0),
+                            variants.get(1)};
+                            
+		int response = JOptionPane.showOptionDialog(frame,
+                                             question,
+                                             "Netflix",
+                                             JOptionPane.YES_NO_OPTION,
+                                             JOptionPane.QUESTION_MESSAGE,
+                                             null,
+                                             options,
+                                             options[0]);
+		/*
+		if (n == 0) {
+			System.out.println( "Yes" );
+			return (String)variants.get(0);
+		} else {
+			System.out.println( "No" );
+			return (String)variants.get(1);
+		}
+		*/
+		
+		
+		switch (response) {
+    		//case JOptionPane.CLOSED_OPTION: return "a";
+    		case JOptionPane.YES_OPTION: return (String)variants.get(0);
+    		case JOptionPane.NO_OPTION: return (String)variants.get(1);
+    		default: return "";
+    	}
+}
+
+function void recommendWindow(JFrame frame, KieRuntime krt, String recommendation) {
+	int n = JOptionPane.showConfirmDialog(null, 
+                recommendation, "Recommendation", JOptionPane.PLAIN_MESSAGE);
+	//System.out.println(recommendation);
+}
+
+
+/*
+function void pytanie(JFrame frame, KieRuntime krt, Question qq) {
+	JLabel textLabel;
+	JButton YesButton;
+	JButton NoButton;
+	JPanel panel;
+	int width = 800;
+	int height = 400;
+	
+	private static void createWindow() {
+    	frame = new JFrame("Netflix"); 
+    	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    	frame.setPreferredSize(new Dimension(width, height));
+    	
+        panel = (JPanel) frame.getContentPane();
+        panel.setLayout(null);    	
+    	
+    	frame.setLayout(null);
+    	frame.setBackground(Color.WHITE);
+    	frame.getContentPane().setBackground(Color.WHITE);
+    	
+    	textLabel = new JLabel("I'm a label in the window",SwingConstants.CENTER); 
+    	textLabel.setBounds(200, 150, 300, 40);
+    	textLabel.setFont(new Font(textLabel.getFont().getName(), textLabel.getFont().getStyle(), 20));
+    	panel.add(textLabel);
+    	
+    	//------------BUTTONS-------------
+    	YesButton = new JButton("Yes");
+    	YesButton.setBounds(200, 300, 80, 40);
+    	YesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+            	System.out.println("YES");
+            }
+    	});
+    	
+    	//frame.add(YesButton, BorderLayout.EAST);
+    	panel.add(YesButton);
+    	
+    	NoButton = new JButton("No");
+    	NoButton.setBounds(550, 300, 80, 40);
+    	NoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+            	System.out.println("NO");
+            }
+    	});
+    	//frame.add(NoButton, BorderLayout.SOUTH);
+    	panel.add(NoButton);
+    	
+    	//------------BUTTONS-------------
+    	
+    	frame.setLocationRelativeTo(null);  
+    	frame.pack(); 
+    	frame.setVisible(true); 
+    	
+	}
+}
+*/
