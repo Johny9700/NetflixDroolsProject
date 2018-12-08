@@ -1,6 +1,6 @@
 package com.sample
  
-import com.sample.DroolsTest.Message;
+import com.sample.DroolsTest.*;
 
 declare Question
 	question: String
@@ -9,10 +9,11 @@ end
 
 rule "Init"
 	when
-	
+		
 	then
 		Question question = new Question();
 		question.setQuestion("Ala ma kota?");
+		changeLabel.change("Ala ma kota?");
 		question.setAnswer(null);
 		insert(question);
 end
