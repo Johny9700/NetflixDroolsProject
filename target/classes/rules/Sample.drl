@@ -54,14 +54,6 @@ rule "Ask about documentary"
 		update(question);
 end
 
-rule "Recommend Terminator 2"
-    when
-        question : Question(question == questions(2), answer == "Yes")
-    then
-		GUI.recommendWindow(frame, "Terminator 2: Judgement Day");
-end
-
-
 function String questions(int n) {
 	switch(n) {
 		case 1: return "Want your night to be action packed?";
@@ -114,6 +106,336 @@ function String questions(int n) {
 	}
 }
 
+rule "Recommend Terminator 2"
+    when
+        question : Question(question == questions(2), answer == "Yes")
+    then
+		GUI.recommendWindow(frame, "Terminator 2: Judgement Day");
+end
+
+rule "Recommend Black Hawk Down"
+    when
+        question : Question(question == questions(4), answer == "Yes")
+    then
+		GUI.recommendWindow(frame, "Black Hawk Down");
+end
+
+rule "Recommend One Upon a Time in the West"
+    when
+        question : Question(question == questions(6), answer == "Old")
+    then
+		GUI.recommendWindow(frame, "One Upon a Time in the West");
+end
+
+rule "Recommend True Grit"
+    when
+        question : Question(question == questions(6), answer == "Fresh")
+    then
+		GUI.recommendWindow(frame, "True Grit");
+end
+
+rule "Recommend Top Gun"
+    when
+        question : Question(question == questions(7), answer == "No")
+    then
+		GUI.recommendWindow(frame, "Top Gun");
+end
+
+rule "Recommend Shooter"
+    when
+        question : Question(question == questions(8), answer == "Now")
+    then
+		GUI.recommendWindow(frame, "Shooter");
+end
+
+rule "Recommend Aeon Flux"
+    when
+        question : Question(question == questions(8), answer == "Future")
+    then
+		GUI.recommendWindow(frame, "Aeon Flux");
+end
+
+rule "Recommend Art of Flight"
+    when
+        question : Question(question == questions(9), answer == "Yes")
+    then
+		GUI.recommendWindow(frame, "Art of Flight");
+end
+
+rule "Recommend Year of the Horse"
+    when
+        question : Question(question == questions(10), answer == "Yes")
+    then
+		GUI.recommendWindow(frame, "Year of the Horse");
+end
+
+rule "Recommend Exit Through the Gift Shop"
+    when
+        question : Question(question == questions(12), answer == "Paint")
+    then
+		GUI.recommendWindow(frame, "Exit Through the Gift Shop");
+end
+
+rule "Recommend Bones Brigade: An Autobiography"
+    when
+        question : Question(question == questions(12), answer == "Pain")
+    then
+		GUI.recommendWindow(frame, "Bones Brigade: An Autobiography");
+end
+
+rule "Recommend Religulous"
+    when
+        question : Question(question == questions(13), answer == "Yes")
+    then
+		GUI.recommendWindow(frame, "Religulous");
+end
+
+rule "Recommend Woody Allen: A Documentary"
+    when
+        question : Question(question == questions(14), answer == "Yes")
+    then
+		GUI.recommendWindow(frame, "Woody Allen: A Documentary");
+end
+
+rule "Recommend Grizzly Man"
+    when
+        question : Question(question == questions(15), answer == "Yes")
+    then
+		GUI.recommendWindow(frame, "Grizzly Man");
+end
+
+rule "Recommend Man on Wire"
+    when
+        question : Question(question == questions(15), answer == "No")
+    then
+		GUI.recommendWindow(frame, "Man on Wire");
+end
+
+rule "Recommend The Evil Dead"
+    when
+        question : Question(question == questions(17), answer == "Yes")
+    then
+		GUI.recommendWindow(frame, "The Evil Dead");
+end
+
+rule "Recommend Cabin in the Woods"
+    when
+        question : Question(question == questions(18), answer == "Yes")
+    then
+		GUI.recommendWindow(frame, "Cabin in the Woods");
+end
+
+rule "Recommend Session 9"
+    when
+        question : Question(question == questions(19), answer == "Yes")
+    then
+		GUI.recommendWindow(frame, "Session 9");
+end
+
+rule "Recommend Insidious"
+    when
+        question : Question(question == questions(19), answer == "No")
+    then
+		GUI.recommendWindow(frame, "Insidious");
+end
+
+rule "Recommend Happy Glimore"
+    when
+        question : Question(question == questions(22), answer == "Yes")
+    then
+		GUI.recommendWindow(frame, "Happy Glimore");
+end
+
+rule "Recommend Duck Soup"
+    when
+        question : Question(question == questions(23), answer == "Yes")
+    then
+		GUI.recommendWindow(frame, "Duck Soup");
+end
+
+rule "Recommend Ferris Buller's Day Off"
+    when
+        question : Question(question == questions(23), answer == "No")
+    then
+		GUI.recommendWindow(frame, "Ferris Buller's Day Off");
+end
+
+rule "Recommend Butch Cassidy and the Sundance Kid"
+    when
+        question : Question(question == questions(26), answer == "Legend")
+    then
+		GUI.recommendWindow(frame, "Butch Cassidy and the Sundance Kid");
+end
+
+rule "Recommend Slap Shot"
+    when
+        question : Question(question == questions(26), answer == "Great")
+    then
+		GUI.recommendWindow(frame, "Slap Shot");
+end
+
+rule "Recommend Trainspotting"
+    when
+        question : Question(question == questions(27), answer == "Gritty")
+    then
+		GUI.recommendWindow(frame, "Trainspotting");
+end
+
+rule "Recommend Lost in Translation"
+    when
+        question : Question(question == questions(28), answer == "Yes")
+    then
+		GUI.recommendWindow(frame, "Lost in Translation");
+end
+
+rule "Recommend Big Fish"
+    when
+        question : Question(question == questions(28), answer == "No")
+    then
+		GUI.recommendWindow(frame, "Big Fish");
+end
+
+rule "Recommend Clerks"
+    when
+        question : Question(question == questions(29), answer == "More")
+    then
+		GUI.recommendWindow(frame, "Clerks");
+end
+
+rule "Recommend ManHattan"
+    when
+        question : Question(question == questions(29), answer == "Less")
+    then
+		GUI.recommendWindow(frame, "ManHattan");
+end
+
+rule "Recommend Sirenity"
+    when
+        question : Question(question == questions(31), answer == "Yes")
+    then
+		GUI.recommendWindow(frame, "Sirenity");
+end
+
+rule "Recommend Star Trek II"
+    when
+        question : Question(question == questions(32), answer == "No")
+    then
+		GUI.recommendWindow(frame, "Star Trek II: The Wrath og Khan");
+end
+
+rule "Recommend Super 8"
+    when
+        question : Question(question == questions(33), answer == "Yes")
+    then
+		GUI.recommendWindow(frame, "Super 8");
+end
+
+rule "Recommend The Hunger Games"
+    when
+        question : Question(question == questions(33), answer == "No")
+    then
+		GUI.recommendWindow(frame, "The Hunger Games");
+end
+
+rule "Recommend Resevior Dogs"
+    when
+        question : Question(question == questions(35), answer == "Yes")
+    then
+		GUI.recommendWindow(frame, "Resevior Dogs");
+end
+
+rule "Recommend Hustle & Flow"
+    when
+        question : Question(question == questions(37), answer == "Yes")
+    then
+		GUI.recommendWindow(frame, "Hustle & Flow");
+end
+
+rule "Recommend Traffic"
+    when
+        question : Question(question == questions(37), answer == "No")
+    then
+		GUI.recommendWindow(frame, "Traffic");
+end
+
+rule "Recommend Miller's Crossing"
+    when
+        question : Question(question == questions(38), answer == "Yes")
+    then
+		GUI.recommendWindow(frame, "Miller's Crossing");
+end
+
+rule "Recommend Clay Pigeons"
+    when
+        question : Question(question == questions(38), answer == "No")
+    then
+		GUI.recommendWindow(frame, "Clay Pigeons");
+end
+
+rule "Recommend The Girl with the Dragon Tattoo?"
+    when
+        question : Question(question == questions(41), answer == "No")
+    then
+		GUI.recommendWindow(frame, "The Girl with the Dragon Tattoo?");
+end
+
+rule "Recommend The Girl Who Played with Fire"
+    when
+        question : Question(question == questions(42), answer == "No")
+    then
+		GUI.recommendWindow(frame, "The Girl Who Played with Fire");
+end
+
+rule "Recommend The Girl who Kicked the Hornets' Nest"
+    when
+        question : Question(question == questions(42), answer == "Yes")
+    then
+		GUI.recommendWindow(frame, "The Girl who Kicked the Hornets' Nest");
+end
+
+rule "Recommend Pi"
+    when
+        question : Question(question == questions(43), answer == "Yes")
+    then
+		GUI.recommendWindow(frame, "Pi");
+end
+
+rule "Recommend Tomboy"
+    when
+        question : Question(question == questions(44), answer == "No")
+    then
+		GUI.recommendWindow(frame, "Tomboy");
+end
+
+rule "Recommend Midnight Cowboy"
+    when
+        question : Question(question == questions(45), answer == "Yes")
+    then
+		GUI.recommendWindow(frame, "Midnight Cowboy");
+end
+
+rule "Recommend The Machinist"
+    when
+        question : Question(question == questions(45), answer == "No")
+    then
+		GUI.recommendWindow(frame, "The Machinist");
+end
+
+rule "Recommend Vanilla Sky"
+    when
+        question : Question(question == questions(46), answer == "Tom")
+    then
+		GUI.recommendWindow(frame, "Vanilla Sky");
+end
+
+rule "Recommend Good Will Hunting"
+    when
+        question : Question(question == questions(46), answer == "Matt")
+    then
+		GUI.recommendWindow(frame, "Good Will Hunting");
+end
+
+/*
 function String askWindow(JFrame frame, String question, ArrayList variants) {
 		Object[] options = {variants.get(0),
                             variants.get(1)};
@@ -137,4 +459,4 @@ function String askWindow(JFrame frame, String question, ArrayList variants) {
 function void recommendWindow(JFrame frame, String recommendation) {
 	int n = JOptionPane.showConfirmDialog(null, 
                 recommendation, "Recommendation", JOptionPane.PLAIN_MESSAGE);
-}
+}*/
