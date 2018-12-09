@@ -1,25 +1,27 @@
 package com.sample
 import javax.swing.*;
-import org.kie.api.runtime.KieRuntime;
 import java.util.ArrayList;
-import com.sample.DroolsTest.*;
 
-global JFrame frame ;
+global JFrame frame;
 
 declare Question
 	question: String
 	answer: String
 end
 
-
-rule "Ask about action"
+rule "Init"
 	when
-	
 	then
 		GUI.initWindow(frame);
 		Question question = new Question();
 		question.setQuestion(questions(1));
 		insert(question);
+end
+
+rule "Ask about action"
+	when
+		question : Question(question == questions(1))
+	then
 		ArrayList<String> variants = new ArrayList<>();
 		variants.add("Yes");
 		variants.add("No");
@@ -41,6 +43,71 @@ rule "Ask about Terminator"
 		update(question);
 end
 
+rule "Ask about war movie"
+    when
+        question : Question(question == questions(2), answer == "No")
+    then
+        question.setQuestion(questions(4));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about Horses..."
+    when
+        question : Question(question == questions(4), answer == "No")
+    then
+        question.setQuestion(questions(5));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about oldschool"
+    when
+        question : Question(question == questions(5), answer == "Yes")
+    then
+        question.setQuestion(questions(6));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Old");
+		variants.add("Fresh");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about keeping serious"
+    when
+        question : Question(question == questions(5), answer == "No")
+    then
+        question.setQuestion(questions(7));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about future or present"
+    when
+        question : Question(question == questions(7), answer == "Yes")
+    then
+        question.setQuestion(questions(8));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Future");
+		variants.add("Now");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
 rule "Ask about documentary"
     when
         question : Question(question == questions(1), answer == "No")
@@ -54,11 +121,485 @@ rule "Ask about documentary"
 		update(question);
 end
 
-rule "Recommend Terminator 2"
+rule "Ask about snowboard"
     when
-        question : Question(question == questions(2), answer == "Yes")
+        question : Question(question == questions(3), answer == "Yes")
     then
-		GUI.recommendWindow(frame, "Terminator 2: Judgement Day");
+        question.setQuestion(questions(9));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about maximum rock"
+    when
+        question : Question(question == questions(9), answer == "No")
+    then
+        question.setQuestion(questions(10));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about streets"
+    when
+        question : Question(question == questions(10), answer == "No")
+    then
+        question.setQuestion(questions(11));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about pain/paint"
+    when
+        question : Question(question == questions(11), answer == "Yes")
+    then
+        question.setQuestion(questions(12));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Pain");
+		variants.add("Paint");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about religion"
+    when
+        question : Question(question == questions(11), answer == "No")
+    then
+        question.setQuestion(questions(13));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about Woody Allen"
+    when
+        question : Question(question == questions(13), answer == "No")
+    then
+        question.setQuestion(questions(14));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about subtitles"
+    when
+        question : Question(question == questions(14), answer == "No")
+    then
+        question.setQuestion(questions(15));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about monsters"
+    when
+        question : Question(question == questions(3), answer == "No")
+    then
+        question.setQuestion(questions(16));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about chainsaw"
+    when
+        question : Question(question == questions(16), answer == "Yes")
+    then
+        question.setQuestion(questions(17));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about 3 part classic"
+    when
+        question : Question(question == questions(17), answer == "No")
+    then
+        question.setQuestion(questions(18));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about abandoned asylums"
+    when
+        question : Question(question == questions(18), answer == "No")
+    then
+        question.setQuestion(questions(18));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about mood to laugh"
+    when
+        question : Question(question == questions(16), answer == "No")
+    then
+        question.setQuestion(questions(20));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about drama"
+    when
+        question : Question(question == questions(20), answer == "Yes")
+    then
+        question.setQuestion(questions(21));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about singing"
+    when
+        question : Question(question == questions(21), answer == "No")
+    then
+        question.setQuestion(questions(22));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about clever wordplay"
+    when
+        question : Question(question == questions(22), answer == "No")
+    then
+        question.setQuestion(questions(23));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about black and white"
+    when
+        question : Question(question == questions(21), answer == "Yes")
+    then
+        question.setQuestion(questions(24));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about Paul Newman"
+    when
+        question : Question(question == questions(24), answer == "Yes")
+    then
+        question.setQuestion(questions(25));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about great/legendary"
+    when
+        question : Question(question == questions(25), answer == "Yes")
+    then
+        question.setQuestion(questions(26));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Great");
+		variants.add("Legend");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about gritty/preety"
+    when
+        question : Question(question == questions(25), answer == "No")
+    then
+        question.setQuestion(questions(27));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Pretty");
+		variants.add("Gritty");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about romantic indie"
+    when
+        question : Question(question == questions(25), answer == "Pretty")
+    then
+        question.setQuestion(questions(28));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about adventure"
+    when
+        question : Question(question == questions(20), answer == "No")
+    then
+        question.setQuestion(questions(30));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about Firefly"
+    when
+        question : Question(question == questions(30), answer == "Yes")
+    then
+        question.setQuestion(questions(31));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about kids"
+    when
+        question : Question(question == questions(31), answer == "No")
+    then
+        question.setQuestion(questions(32));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about thrills"
+    when
+        question : Question(question == questions(32), answer == "Yes")
+    then
+        question.setQuestion(questions(31));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about criminal intent"
+    when
+        question : Question(question == questions(30), answer == "No")
+    then
+        question.setQuestion(questions(34));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about diatribes"
+    when
+        question : Question(question == questions(34), answer == "Yes")
+    then
+        question.setQuestion(questions(35));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about drugs"
+    when
+        question : Question(question == questions(35), answer == "No")
+    then
+        question.setQuestion(questions(36));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about hip hop"
+    when
+        question : Question(question == questions(36), answer == "No")
+    then
+        question.setQuestion(questions(37));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about mob story"
+    when
+        question : Question(question == questions(36), answer == "Yes")
+    then
+        question.setQuestion(questions(38));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about romance"
+    when
+        question : Question(question == questions(34), answer == "No")
+    then
+        question.setQuestion(questions(39));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about rape scene"
+    when
+        question : Question(question == questions(39), answer == "No")
+    then
+        question.setQuestion(questions(40));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about Girl with the Dragon Tattoo"
+    when
+        question : Question(question == questions(40), answer == "No")
+    then
+        question.setQuestion(questions(41));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about Girl Who Played with Fire"
+    when
+        question : Question(question == questions(41), answer == "Yes")
+    then
+        question.setQuestion(questions(42));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about being completely confused"
+    when
+        question : Question(question == questions(40), answer == "Yes")
+    then
+        question.setQuestion(questions(43));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about subtitles2"
+    when
+        question : Question(question == questions(43), answer == "No")
+    then
+        question.setQuestion(questions(44));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about keeping mellow"
+    when
+        question : Question(question == questions(44), answer == "Yes")
+    then
+        question.setQuestion(questions(45));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Yes");
+		variants.add("No");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
+end
+
+rule "Ask about Tom/Matt"
+    when
+        question : Question(question == questions(39), answer == "Yes")
+    then
+        question.setQuestion(questions(46));
+		ArrayList<String> variants = new ArrayList<>();
+		variants.add("Tom");
+		variants.add("Matt");
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+		question.setAnswer(ans);
+		update(question);
 end
 
 
@@ -75,7 +616,7 @@ function String questions(int n) {
 		case 9: return "Do you consider snowboard films to be documentaries?";
 		case 10: return "Do you want to have your face melted off reom maximum rock?";
 		case 11: return "Take it to the streets?";
-		case 12: return "Plain or Paint?";
+		case 12: return "Pain or Paint?";
 		case 13: return "Do you want to see how ridiculous religion can be?";
 		case 14: return "Are you Woody Allen fan? Or would you like to become one?";
 		case 15: return "Do subtitels bother you?";
@@ -86,7 +627,7 @@ function String questions(int n) {
 		case 20: return "Are in the mood to laugh?";
 		case 21: return "Do you want some drama with your laughter?";
 		case 22: return "Do you mind if people break out singing?";
-		case 23: return "Do you find wordplay entertaining?";
+		case 23: return "Do you find clever wordplay entertaining?";
 		case 24: return "Are you adverse to black and white?";
 		case 25: return "Do you love Paul Newman? Do you want to?";
 		case 26: return "Do you want to watch something great or legendary?";
@@ -94,7 +635,7 @@ function String questions(int n) {
 		case 28: return "Slow-paced quirky romantic indie?";
 		case 29: return "Do you like your humor to be more or less lewd?";
 		case 30: return "Do you hunger for adventure?";
-		case 31: return "Where you a fan of Firefly?";
+		case 31: return "Were you a fan of Firefly?";
 		case 32: return "Do you like main rolls be played by kids?";
 		case 33: return "Want some thrills with your adventure?";
 		case 34: return "Care for some criminal intent?";
@@ -113,6 +654,14 @@ function String questions(int n) {
 		default: return "";
 	}
 }
+
+
+rule "Recommend Terminator 2"
+    when
+        question : Question(question == questions(2), answer == "Yes")
+    then
+		GUI.recommendWindow(frame, "Terminator 2: Judgement Day");
+end
 
 function String askWindow(JFrame frame, String question, ArrayList variants) {
 		Object[] options = {variants.get(0),
