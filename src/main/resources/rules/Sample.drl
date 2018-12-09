@@ -11,16 +11,19 @@ declare Question
 	answer: String
 end
 
+
 rule "Ask about action"
 	when
+	
 	then
+		GUI.initWindow(frame);
 		Question question = new Question();
 		question.setQuestion(questions(1));
 		insert(question);
 		ArrayList<String> variants = new ArrayList<>();
 		variants.add("Yes");
 		variants.add("No");
-		String ans = askWindow(frame, question.getQuestion(), variants);
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
 		question.setAnswer(ans);
 		update(question);
 end
@@ -33,7 +36,7 @@ rule "Ask about Terminator"
 		ArrayList<String> variants = new ArrayList<>();
 		variants.add("Yes");
 		variants.add("No");
-		String ans = askWindow(frame, question.getQuestion(), variants);
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
 		question.setAnswer(ans);
 		update(question);
 end
@@ -46,7 +49,7 @@ rule "Ask about documentary"
 		ArrayList<String> variants = new ArrayList<>();
 		variants.add("Yes");
 		variants.add("No");
-		String ans = askWindow(frame, question.getQuestion(), variants);
+		String ans = GUI.askWindow(frame, question.getQuestion(), variants);
 		question.setAnswer(ans);
 		update(question);
 end
@@ -55,7 +58,7 @@ rule "Recommend Terminator 2"
     when
         question : Question(question == questions(2), answer == "Yes")
     then
-		recommendWindow(frame, "Terminator 2: Judgement Day");
+		GUI.recommendWindow(frame, "Terminator 2: Judgement Day");
 end
 
 

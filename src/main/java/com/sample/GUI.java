@@ -29,4 +29,13 @@ public class GUI {
 											"Recommendation",
 											JOptionPane.PLAIN_MESSAGE);
 	}
+	
+	public static void initWindow(JFrame frame) {
+		int n = JOptionPane.showConfirmDialog(null,
+											"Welcome to the program which can help you with dealing with the problem: \n"
+											+ "                      \"What should I watch today on Netflix?\"\n "
+											+ "Just answer the questions and the program will help you to chose." ,
+											"Netflix",
+											JOptionPane.PLAIN_MESSAGE);
+	}
 }
