@@ -1,4 +1,5 @@
 package com.sample;
+import org.kie.api.logger.*;
 
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
@@ -12,8 +13,10 @@ public class DroolsTest {
 			KieServices ks = KieServices.Factory.get();
 			KieContainer kContainer = ks.getKieClasspathContainer();
 			KieSession kSession = kContainer.newKieSession("ksession-rules");
+			KieRuntimeLogger kLogger = ks.getLoggers().newFileLogger(kSession, "test");
 
 			kSession.fireAllRules();
+			kLogger.close();
 		} catch (Throwable t) {
 			t.printStackTrace();
 		}

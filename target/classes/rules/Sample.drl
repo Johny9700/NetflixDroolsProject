@@ -255,7 +255,7 @@ rule "Ask about abandoned asylums"
     when
         question : Question(question == questions(18), answer == "No")
     then
-        question.setQuestion(questions(18));
+        question.setQuestion(questions(19));
 		ArrayList<String> variants = new ArrayList<>();
 		variants.add("Yes");
 		variants.add("No");
