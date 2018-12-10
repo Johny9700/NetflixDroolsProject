@@ -21,14 +21,17 @@ public class GUI {
 	}
 
 	public static void recommendWindow(JFrame frame, String recommendation) {
-		int n = JOptionPane.showConfirmDialog(null, recommendation, "Recommendation", JOptionPane.PLAIN_MESSAGE);
+		ImageIcon icon = new ImageIcon("src/main/resources/img/film_icon_48.png");
+		int n = JOptionPane.showConfirmDialog(null, recommendation, "Recommendation", JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE, icon);
 	}
 
 	public static void initWindow(JFrame frame) {
+		ImageIcon icon = new ImageIcon();
 		int n = JOptionPane.showConfirmDialog(null,
 				"Welcome to the program which can help you with dealing with the problem: \n"
-						+ "                      \"What should I watch today on Netflix?\"\n "
-						+ "Just answer the questions and the program will help you to choose.",
-				"Netflix", JOptionPane.PLAIN_MESSAGE);
+						+ "                             \"What should I watch today on Netflix?\"\n "
+						+ "       Just answer the questions and the program will help you to choose.\n"
+						+ "               Inf132212 - Jan Dudziak                  Inf132235 - Dariusz Grynia",
+				"Netflix",  JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, icon);
 	}
 }
