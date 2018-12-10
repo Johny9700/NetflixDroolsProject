@@ -22,7 +22,8 @@ public class GUI {
 
 	public static void recommendWindow(JFrame frame, String recommendation) {
 		ImageIcon icon = new ImageIcon("src/main/resources/img/film_icon_48.png");
-		int n = JOptionPane.showConfirmDialog(null, recommendation, "Recommendation", JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE, icon);
+		int n = JOptionPane.showConfirmDialog(null, recommendation, "Recommendation", JOptionPane.DEFAULT_OPTION,
+				JOptionPane.PLAIN_MESSAGE, icon);
 	}
 
 	public static void initWindow(JFrame frame) {
@@ -32,6 +33,6 @@ public class GUI {
 						+ "                             \"What should I watch today on Netflix?\"\n "
 						+ "       Just answer the questions and the program will help you to choose.\n"
 						+ "               Inf132212 - Jan Dudziak                  Inf132235 - Dariusz Grynia",
-				"Netflix",  JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, icon);
+				"Netflix", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, icon);
 	}
 }
