@@ -388,13 +388,27 @@ end
 
 rule "Ask about romantic indie"
     when
-        Question(question == questions(25), answer == "Pretty")
+        Question(question == questions(27), answer == "Pretty")
     then
         Question question = new Question();
         question.setQuestion(questions(28));
         ArrayList<String> variants = new ArrayList<>();
         variants.add("Yes");
         variants.add("No");
+        String ans = GUI.askWindow(frame, question.getQuestion(), variants);
+        question.setAnswer(ans);
+        insert(question);
+end
+
+rule "Ask about humor more/less lewd"
+    when
+        Question(question == questions(24), answer == "No")
+    then
+        Question question = new Question();
+        question.setQuestion(questions(29));
+        ArrayList<String> variants = new ArrayList<>();
+        variants.add("More");
+        variants.add("Less");
         String ans = GUI.askWindow(frame, question.getQuestion(), variants);
         question.setAnswer(ans);
         insert(question);
@@ -447,7 +461,7 @@ rule "Ask about thrills"
         Question(question == questions(32), answer == "Yes")
     then
         Question question = new Question();
-        question.setQuestion(questions(31));
+        question.setQuestion(questions(33));
         ArrayList<String> variants = new ArrayList<>();
         variants.add("Yes");
         variants.add("No");
@@ -649,7 +663,7 @@ function String questions(int n) {
         case 7: return "Do you want to keep it serious?";
         case 8: return "Set in the future or present day?";
         case 9: return "Do you consider snowboard films to be documentaries?";
-        case 10: return "Do you want to have your face melted off reom maximum rock?";
+        case 10: return "Do you want to have your face melted off from maximum rock?";
         case 11: return "Take it to the streets?";
         case 12: return "Pain or Paint?";
         case 13: return "Do you want to see how ridiculous religion can be?";
@@ -658,7 +672,7 @@ function String questions(int n) {
         case 16: return "Monsters, murderers and madness?";
         case 17: return "Should there be a blood-soaked chainsaw at some point?";
         case 18: return "Three parts clasic horror, one part something new?";
-        case 19: return "Do abandoned asylums scare the sence uot you?";
+        case 19: return "Do abandoned asylums scare the sence out you?";
         case 20: return "Are in the mood to laugh?";
         case 21: return "Do you want some drama with your laughter?";
         case 22: return "Do you mind if people break out singing?";
@@ -893,11 +907,11 @@ rule "Recommend ManHattan"
         GUI.recommendWindow(frame, "ManHattan");
 end
 
-rule "Recommend Sirenity"
+rule "Recommend Serenity"
     when
         Question(question == questions(31), answer == "Yes")
     then
-        GUI.recommendWindow(frame, "Sirenity");
+        GUI.recommendWindow(frame, "Serenity");
 end
 
 rule "Recommend Star Trek II"
@@ -960,7 +974,7 @@ rule "Recommend The Girl with the Dragon Tattoo?"
     when
         Question(question == questions(41), answer == "No")
     then
-        GUI.recommendWindow(frame, "The Girl with the Dragon Tattoo?");
+        GUI.recommendWindow(frame, "The Girl with the Dragon Tattoo");
 end
 
 rule "Recommend The Girl Who Played with Fire"
