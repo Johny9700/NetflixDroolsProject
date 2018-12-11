@@ -12,7 +12,6 @@ end
 rule "Ask about action"
     when
     then
-        GUI.initWindow(frame);
         Question question = new Question();
         question.setQuestion(questions(1));
         ArrayList<String> variants = new ArrayList<>();
